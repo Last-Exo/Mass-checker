@@ -12,8 +12,7 @@ from enum import Enum
 from urllib.parse import urlparse
 from datetime import datetime
 
-# Import both regular playwright and enhanced browsers
-from playwright.async_api import async_playwright as playwright_async, Page
+# Enhanced browsers only - no legacy playwright
 logger = logging.getLogger(__name__)
 
 try:
@@ -21,7 +20,7 @@ try:
     PATCHRIGHT_AVAILABLE = True
 except ImportError:
     PATCHRIGHT_AVAILABLE = False
-    logger.warning("Patchright not available, falling back to regular Playwright")
+    logger.error("Patchright not available - enhanced browser required!")
 
 try:
     from camoufox.async_api import AsyncCamoufox
@@ -123,15 +122,13 @@ class AccountCheckerCF:
         if DEBUG_ENHANCED_FEATURES:
             logger.info("🚀 Initializing enhanced browser automation with Turnstile-Solver")
         
-        # Choose browser engine based on availability and settings
-        if USE_ENHANCED_BROWSER and PATCHRIGHT_AVAILABLE:
-            self.playwright = await patchright_async().start()
-            if DEBUG_ENHANCED_FEATURES:
-                logger.info("✅ Using Patchright for enhanced stealth")
-        else:
-            self.playwright = await playwright_async().start()
-            if DEBUG_ENHANCED_FEATURES:
-                logger.info("✅ Using regular Playwright")
+        # Enhanced browser only - no fallback to regular playwright
+        if not PATCHRIGHT_AVAILABLE:
+            raise RuntimeError("Patchright required for enhanced browser automation!")
+        
+        self.playwright = await patchright_async().start()
+        if DEBUG_ENHANCED_FEATURES:
+            logger.info("✅ Using Patchright for enhanced stealth")
         
         return self
     
@@ -697,12 +694,85 @@ class AccountCheckerCF:
         return context
     
     async def solve_turnstile_challenge(self, page: Any, url: str, sitekey: str) -> Dict[str, Any]:
-        """Advanced Turnstile solving using Turnstile-Solver techniques"""
+        """Advanced Turnstile solving using Turnstile-Solver API service"""
         start_time = time.time()
         
         if DEBUG_ENHANCED_FEATURES:
             logger.info(f"🔧 Starting advanced Turnstile challenge solve for sitekey: {sitekey}")
         
+        # First try using the Turnstile API service if enabled
+        from config.settings import ENABLE_TURNSTILE_SERVICE, TURNSTILE_SERVICE_HOST, TURNSTILE_SERVICE_PORT, TURNSTILE_TIMEOUT
+        
+        if ENABLE_TURNSTILE_SERVICE:
+            try:
+                api_url = f"http://{TURNSTILE_SERVICE_HOST}:{TURNSTILE_SERVICE_PORT}/turnstile"
+                params = {
+                    'url': url,
+                    'sitekey': sitekey
+                }
+                
+                if DEBUG_ENHANCED_FEATURES:
+                    logger.info(f"🌐 Using Turnstile API service: {api_url}")
+                
+                async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=TURNSTILE_TIMEOUT)) as session:
+                    # Step 1: Submit the task
+                    async with session.get(api_url, params=params) as response:
+                        if response.status == 202:  # Task accepted
+                            task_data = await response.json()
+                            task_id = task_data.get('task_id')
+                            
+                            if task_id:
+                                if DEBUG_ENHANCED_FEATURES:
+                                    logger.info(f"🔄 Turnstile task submitted: {task_id}")
+                                
+                                # Step 2: Poll for result
+                                result_url = f"http://{TURNSTILE_SERVICE_HOST}:{TURNSTILE_SERVICE_PORT}/result"
+                                max_attempts = 30  # 30 seconds max
+                                
+                                for attempt in range(max_attempts):
+                                    await asyncio.sleep(1)  # Wait 1 second between polls
+                                    
+                                    async with session.get(result_url, params={'id': task_id}) as result_response:
+                                        if result_response.status == 200:
+                                            result = await result_response.json()
+                                            
+                                            if isinstance(result, dict) and result.get('status') == 'success':
+                                                elapsed_time = round(time.time() - start_time, 3)
+                                                token = result.get('token') or result.get('captcha_token')
+                                                if token:
+                                                    if DEBUG_ENHANCED_FEATURES:
+                                                        logger.info(f"✅ Turnstile API solved: {token[:10]}... in {elapsed_time}s")
+                                                    return {
+                                                        'success': True,
+                                                        'token': token,
+                                                        'elapsed_time': elapsed_time
+                                                    }
+                                            elif isinstance(result, str) and "CAPTCHA_NOT_READY" not in result:
+                                                # Check if result is a direct token string
+                                                if len(result) > 50:  # Turnstile tokens are long
+                                                    elapsed_time = round(time.time() - start_time, 3)
+                                                    if DEBUG_ENHANCED_FEATURES:
+                                                        logger.info(f"✅ Turnstile API solved: {result[:10]}... in {elapsed_time}s")
+                                                    return {
+                                                        'success': True,
+                                                        'token': result,
+                                                        'elapsed_time': elapsed_time
+                                                    }
+                                            
+                                            if DEBUG_ENHANCED_FEATURES and attempt % 5 == 0:
+                                                logger.info(f"🔄 Waiting for Turnstile solution... ({attempt + 1}/{max_attempts})")
+                                
+                                if DEBUG_ENHANCED_FEATURES:
+                                    logger.info(f"⚠️ Turnstile API timeout after {max_attempts} seconds")
+                        else:
+                            if DEBUG_ENHANCED_FEATURES:
+                                logger.info(f"⚠️ Turnstile API HTTP error: {response.status}")
+            except Exception as e:
+                if DEBUG_ENHANCED_FEATURES:
+                    logger.info(f"⚠️ Turnstile API service error: {e}")
+                logger.info("🔄 Falling back to built-in Turnstile solver")
+        
+        # Fallback to built-in solver
         try:
             # Create Turnstile HTML page using Turnstile-Solver template
             url_with_slash = url + "/" if not url.endswith("/") else url
