@@ -165,7 +165,7 @@ The system uses the `simple_useragent` package to generate realistic mobile user
 The system automatically detects which solvers are available:
 
 - **Turnstile Solver**: Always available (primary dependency)
-- **BotsForge**: May not work in headless environments (requires display)
+- **BotsForge**: Uses Patchright (same as main system), works without PyAutoGUI
 - **DrissionPage**: Always available (fallback dependency)
 
 ## 📸 Screenshot Feature
