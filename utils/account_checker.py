@@ -10,7 +10,6 @@ from typing import List, Tuple, Dict, Any
 from datetime import datetime
 
 from .browser_manager import BrowserManager
-from .turnstile_handler import TurnstileHandler
 from .auth_handler import AuthHandler, AccountStatus
 from .login_handler import LoginHandler
 
@@ -30,9 +29,8 @@ class AccountChecker:
     
     def __init__(self, proxies: List[str] = None):
         self.browser_manager = BrowserManager(proxies)
-        self.turnstile_handler = TurnstileHandler()
         self.auth_handler = AuthHandler()
-        self.login_handler = LoginHandler(self.turnstile_handler, self.auth_handler)
+        # Login handler will be created per check with specific user agent and proxy
         
         # Delay settings for intelligent timing
         self.min_delay_single = MIN_DELAY_SINGLE_PROXY
@@ -78,8 +76,14 @@ class AccountChecker:
                 page = await context.new_page()
                 
                 try:
+                    # Get user agent for this check
+                    user_agent = self.browser_manager.get_next_user_agent()
+                    
+                    # Create login handler with specific user agent and proxy
+                    login_handler = LoginHandler(self.auth_handler, user_agent=user_agent, proxy=proxy)
+                    
                     # Perform login
-                    login_success, login_result = await self.login_handler.perform_login(page, email, password)
+                    login_success, login_result = await login_handler.perform_login(page, email, password)
                     
                     if not login_success:
                         # Determine the specific failure reason

@@ -7,7 +7,8 @@ import logging
 import random
 from typing import Any, Dict, Optional, Tuple
 
-from config.settings import LOGIN_URL, NAVIGATION_TIMEOUT
+from config.settings import LOGIN_URL, NAVIGATION_TIMEOUT, DROPBOX_ENABLED
+from utils.unified_turnstile_handler import create_turnstile_handler
 
 logger = logging.getLogger(__name__)
 
@@ -15,9 +16,12 @@ logger = logging.getLogger(__name__)
 class LoginHandler:
     """Handles Epic Games login process"""
     
-    def __init__(self, turnstile_handler, auth_handler):
-        self.turnstile_handler = turnstile_handler
+    def __init__(self, auth_handler, user_agent: str = None, proxy: str = None):
         self.auth_handler = auth_handler
+        self.user_agent = user_agent
+        self.proxy = proxy
+        # Create turnstile handler with our settings
+        self.turnstile_handler = create_turnstile_handler(user_agent=user_agent, proxy=proxy)
     
     async def perform_login(self, page: Any, email: str, password: str) -> Tuple[bool, Dict[str, Any]]:
         """
@@ -31,8 +35,9 @@ class LoginHandler:
                 return False, {'error': 'Failed to navigate to login page'}
             
             # Handle any initial Turnstile challenges
-            if not await self.turnstile_handler.handle_turnstile_if_present(page):
-                return False, {'error': 'Failed to solve initial Turnstile challenge'}
+            challenge_result = await self.turnstile_handler.solve_turnstile_challenge(page)
+            if not challenge_result.get('success') and challenge_result.get('status') == 'captcha':
+                return False, {'error': f'Failed to solve initial Turnstile challenge: {challenge_result.get("error", "Unknown error")}'}
             
             # Fill login form
             if not await self._fill_login_form(page, email, password):
@@ -47,6 +52,22 @@ class LoginHandler:
             
             if status.value == "valid":
                 logger.info(f"✅ {email} - Login successful")
+                
+                # Take screenshot only for Epic Games successful logins and upload to Dropbox
+                current_url = page.url
+                if DROPBOX_ENABLED and self._is_epic_games_domain(current_url):
+                    try:
+                        screenshot_path = await self.turnstile_handler.take_screenshot_and_upload(page, email)
+                        if screenshot_path:
+                            result['screenshot_path'] = screenshot_path
+                            logger.info(f"📸 {email} - Epic Games login screenshot saved to Dropbox: {screenshot_path}")
+                        else:
+                            logger.warning(f"⚠️ {email} - Failed to save Epic Games screenshot to Dropbox")
+                    except Exception as e:
+                        logger.warning(f"⚠️ {email} - Epic Games screenshot error: {str(e)}")
+                elif DROPBOX_ENABLED:
+                    logger.debug(f"🔍 {email} - Skipping screenshot (not Epic Games domain): {current_url}")
+                
                 return True, result
             else:
                 logger.info(f"❌ {email} - Login failed: {status.value}")
@@ -55,6 +76,31 @@ class LoginHandler:
         except Exception as e:
             logger.info(f"❌ {email} - Login error: {str(e)}")
             return False, {'error': f'Login error: {str(e)}'}
+    
+    def _is_epic_games_domain(self, url: str) -> bool:
+        """Check if the URL is from Epic Games domain"""
+        epic_domains = [
+            'epicgames.com',
+            'www.epicgames.com',
+            'store.epicgames.com',
+            'launcher.store.epicgames.com',
+            'accounts.epicgames.com'
+        ]
+        
+        try:
+            from urllib.parse import urlparse
+            parsed_url = urlparse(url)
+            domain = parsed_url.netloc.lower()
+            
+            # Check if domain matches any Epic Games domains
+            for epic_domain in epic_domains:
+                if domain == epic_domain or domain.endswith('.' + epic_domain):
+                    return True
+            
+            return False
+        except Exception as e:
+            logger.warning(f"Error parsing URL {url}: {e}")
+            return False
     
     async def _navigate_to_login(self, page: Any, email: str) -> bool:
         """Navigate to Epic Games login page"""
@@ -161,8 +207,9 @@ class LoginHandler:
             logger.info(f"🚀 {email} - Submitting login form...")
             
             # Handle any Turnstile challenges before submission
-            if not await self.turnstile_handler.handle_turnstile_if_present(page):
-                logger.info(f"❌ {email} - Failed to solve Turnstile before submission")
+            challenge_result = await self.turnstile_handler.solve_turnstile_challenge(page)
+            if not challenge_result.get('success') and challenge_result.get('status') == 'captcha':
+                logger.info(f"❌ {email} - Failed to solve Turnstile before submission: {challenge_result.get('error', 'Unknown error')}")
                 return False
             
             # Find and click submit button
@@ -219,14 +266,16 @@ class LoginHandler:
             
             while challenge_attempts < max_challenge_attempts:
                 # Check for Turnstile challenges after submission
-                if await self.turnstile_handler.detect_turnstile_challenge(page):
+                challenge_info = await self.turnstile_handler.detect_turnstile_challenge(page)
+                if challenge_info.get('detected'):
                     logger.info(f"🔐 {email} - Post-submission Turnstile detected (attempt {challenge_attempts + 1})")
                     
-                    if await self.turnstile_handler.handle_turnstile_if_present(page):
+                    challenge_result = await self.turnstile_handler.solve_turnstile_challenge(page)
+                    if challenge_result.get('success'):
                         logger.info(f"✅ {email} - Post-submission Turnstile solved")
                         await asyncio.sleep(2)  # Wait for page to process
                     else:
-                        logger.info(f"❌ {email} - Failed to solve post-submission Turnstile")
+                        logger.info(f"❌ {email} - Failed to solve post-submission Turnstile: {challenge_result.get('error', 'Unknown error')}")
                         return False
                     
                     challenge_attempts += 1

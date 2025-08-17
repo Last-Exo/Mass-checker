@@ -4,22 +4,8 @@ import logging
 import asyncio
 from typing import Optional
 from dataclasses import dataclass
-
-try:
-    from camoufox.async_api import AsyncCamoufox
-    CAMOUFOX_AVAILABLE = True
-except ImportError:
-    CAMOUFOX_AVAILABLE = False
-
-try:
-    from patchright.async_api import async_playwright
-    PATCHRIGHT_AVAILABLE = True
-except ImportError:
-    try:
-        from playwright.async_api import async_playwright
-        PATCHRIGHT_AVAILABLE = True
-    except ImportError:
-        PATCHRIGHT_AVAILABLE = False
+from camoufox.async_api import AsyncCamoufox
+from patchright.async_api import async_playwright
 
 
 @dataclass
@@ -155,14 +141,6 @@ class AsyncTurnstileSolver:
         """
         Solve the Turnstile challenge and return the result.
         """
-        if not PATCHRIGHT_AVAILABLE:
-            return TurnstileResult(
-                turnstile_value=None,
-                elapsed_time_seconds=0,
-                status="failure",
-                reason="Playwright/Patchright not available"
-            )
-        
         start_time = time.time()
         if self.browser_type in ["chromium", "chrome", "msedge"]:
             playwright = await async_playwright().start()
@@ -171,15 +149,8 @@ class AsyncTurnstileSolver:
                 args=self.browser_args
             )
 
-        elif self.browser_type == "camoufox" and CAMOUFOX_AVAILABLE:
+        elif self.browser_type == "camoufox":
             browser = await AsyncCamoufox(headless=self.headless).start()
-        elif self.browser_type == "camoufox" and not CAMOUFOX_AVAILABLE:
-            # Fallback to chromium if camoufox not available
-            playwright = await async_playwright().start()
-            browser = await playwright.chromium.launch(
-                headless=self.headless,
-                args=self.browser_args
-            )
 
         try:
             page = await self._setup_page(browser, url, sitekey, action, cdata)
