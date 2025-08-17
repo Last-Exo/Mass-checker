@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en-US@POSIX" dir="ltr" data-rh="lang,dir"><head><style data-emotion="mui" data-s=""></style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, shrink-to-fit=no, viewport-fit=cover">
+    <meta id="theme-color-meta" name="theme-color" content="#101014">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="https://static-assets-prod.unrealengine.com/account-portal/static/manifest.json">
+    <link rel="shortcut icon" href="https://static-assets-prod.unrealengine.com/account-portal/static/epic-favicon-96x96.png">
+    <link rel="apple-touch-icon" href="https://static-assets-prod.unrealengine.com/account-portal/static/epic_logo.png">
+    <script type="text/javascript">
+        try {
+            window.AppInit = Date.now().toString();
+        } catch (err) {
+            console.error(err);
+        }
+
+        window._epicEnableCookieGuard = false;
+
+        if (window.flexview) {
+            (function(){
+                // Immediately start showing real loading progress percentage
+                window.flexview.showProgress();
+
+                // Enter and Escape keys are swapped on the Nintendo Switch and Japanese Specification PlayStations
+                var buttonsSwapped = window.kitt.version.major === 2
+                    ? window.kitt.queryFaceButtonFunction('FaceButton_Right') === 'FaceButton_Enter' // KITT 2
+                    : window.kitt.queryFaceButtonFunction(3) === 0; // KITT 1
+
+                // Allow users to back out from a slow loading process and optionally try again
+                function onKeyDown(event) {
+                    var backButton = buttonsSwapped ? event.keyCode === 13 : event.keyCode === 27;
+                    if (backButton) window.close();
+                }
+
+                document.addEventListener('keydown', onKeyDown);
+
+                var checkProgressInterval = window.setInterval(function() {
+                    if (window.flexview.getProgress() >= 99) {
+                        window.clearInterval(checkProgressInterval);
+                        document.removeEventListener('keydown', onKeyDown);
+                    }
+                }, 1000);
+            })();
+        }
+    </script>
+    <title>Epic Games</title>
+  <script type="module" crossorigin="" src="https://static-assets-prod.unrealengine.com/account-portal/static/assets/index-DE5X_YN2.js"></script>
+  <link rel="stylesheet" crossorigin="" href="https://static-assets-prod.unrealengine.com/account-portal/static/assets/index-CTGxZpYh.css">
+<link href="https://tracking.epicgames.com/tracking.js" rel="preload" as="script"><link rel="modulepreload" as="script" crossorigin="" href="https://static-assets-prod.unrealengine.com/account-portal/static/assets/ie11-BP5gg1gY.js"><link rel="modulepreload" as="script" crossorigin="" href="https://static-assets-prod.unrealengine.com/account-portal/static/assets/es.array.from-BLRsHz0E.js"><style data-emotion="mui-global" data-s=""></style><style data-emotion="mui-global" data-s=""></style><link rel="modulepreload" as="script" crossorigin="" href="https://static-assets-prod.unrealengine.com/account-portal/static/assets/stable-BHiD0VKh.js"></head>
+<body style="background: rgba(16, 16, 21, 0.83); overflow: hidden;" dir="ltr">
+<script>
+    const isLightTheme = document.location.search.match(/theme=light/);
+    const width = window.innerWidth;
+    if (!window.ue || !window.ue.signinprompt && !window.ue.vpc && !window.ue.auth) {
+        if (isLightTheme) {
+            const themeMeta = document.getElementById('theme-color-meta');
+            themeMeta.content = '#ffffff';
+            document.body.style.background = 'rgba(255, 255, 255, 0.83)';
+        } else {
+            document.body.style.background = 'rgba(16,16,21,0.83)';
+        }
+    }
+</script>
+<script>
+    const epicTrackingBase = 'https://tracking.epicgames.com';
+    const unrealTrackingBase = 'https://tracking.unrealengine.com';
+    const fortniteTrackingBase = 'https://tracking.fortnite.com';
+    window.__tracking_base = ~window.location.hostname.indexOf('unrealengine') ? unrealTrackingBase : ~window.location.hostname.indexOf('fortnite') ? fortniteTrackingBase : epicTrackingBase;
+    const sid = document.location.search.match(/sid=([^&]*)/);
+    const src = window.__tracking_base + '/tracking.js' + (sid ? ('?sid=' + sid[1]) : '');
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = src;
+    script.async = true;
+    document.body.appendChild(script);
+    const link = document.createElement('link');
+    link.href = src;
+    link.rel = 'preload';
+    link.as = 'script';
+    document.head.appendChild(link);
+</script><script type="text/javascript" src="https://tracking.epicgames.com/tracking.js" async=""></script>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<div id="root" aria-hidden="true"></div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+
+                  <script>
+                    console.log = function () {};
+                    console.debug = function () {};
+                    console.table = function () {};
+                    console.info = function () {};
+                    console.trace = function () {};
+                  </script>
+                <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'970ca0844c6af51e',t:'MTc1NTQ2OTk0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;" aria-hidden="true"></iframe>
+
+<div role="presentation" class="MuiDialog-root MuiModal-root mui-126xj0f"><div tabindex="0" data-testid="sentinelStart"></div><div class="MuiDialog-container MuiDialog-scrollBody mui-ruoso9" role="presentation" tabindex="-1" style="opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1);"><div class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded MuiDialog-paper MuiDialog-paperScrollBody MuiDialog-paperWidthSm mui-78243z" role="none" aria-labelledby=":r2:" style="opacity: 1; will-change: auto;"><div class="MuiDialogContent-root mui-125a5mk" id="modal-content" tabindex="-1" role="main"><div class="mui-xsi34s"></div><div class="mui-1t2uvj0"><div style="opacity: 1; will-change: opacity, transform; transform: none;"><div name="attention-logo" class="mui-1npkm4x"><svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" size="14.4" color="#FFC229" class="mui-1978cro"><circle cx="36.0004" cy="35.9994" r="28.35" fill="#FFC229" fill-opacity="0.05"></circle><circle cx="36.0004" cy="35.9994" r="27.7875" stroke="#FFC229" stroke-opacity="0.05" stroke-width="1.125"></circle><circle cx="35.9992" cy="36.0007" r="32.7375" stroke="#FFC229" stroke-width="5.625"></circle><path d="M38.625 22.875C38.625 21.4253 37.4497 20.25 36 20.25C34.5503 20.25 33.375 21.4253 33.375 22.875V36C33.375 37.4497 34.5503 38.625 36 38.625C37.4497 38.625 38.625 37.4497 38.625 36V22.875Z" fill="#FFC229"></path><path d="M36 49.7812C37.8122 49.7812 39.2813 48.3122 39.2813 46.5C39.2813 44.6878 37.8122 43.2187 36 43.2187C34.1878 43.2187 32.7188 44.6878 32.7188 46.5C32.7188 48.3122 34.1878 49.7812 36 49.7812Z" fill="#FFC229"></path></svg></div><div spacing="6.4" class="mui-1osj7av"><div spacing="0" class="mui-1hyql0m"><h1 class="MuiTypography-root MuiTypography-h1 MuiTypography-alignLeft mui-nzaf08">Something Went Wrong</h1></div></div><div spacing="6.4" class="mui-1osj7av"><p class="MuiTypography-root MuiTypography-body1 mui-179z41x" id="page-error">Enable JavaScript and cookies to continue(function(){window._cf_chl_opt = {cvId: '3',cZone: 'www.epicgames.com',cType: 'managed',cRay: '970ca088efacf51e',cH: '7yj7p3apRAbe8y7Bt1DlChlmh1k9uVi.8xsIO9SRnSU-1755469943-1.2.1.1-JiSvPRbh.g5R8boHHgsAl5FTVc9GBwQo.nFA1e9IQfXHhlutc_alXpFQIg8bji3z',cUPMDTk:"\/id\/api\/authenticate?__cf_chl_tk=vyK7_VIyeLT6G95LnhqSgUzoxuihvDPMU6GvMnbtRO8-1755469943-1.0.1.1-RQANaufKpxutBSM6lstXjfW21UhbQz8Rot3MgsOBnjE",cFPWv: 'b',cITimeS: '1755469943',cTplC:1,cTplV:5,cTplB: 'cf',fa:"\/id\/api\/authenticate?__cf_chl_f_tk=vyK7_VIyeLT6G95LnhqSgUzoxuihvDPMU6GvMnbtRO8-1755469943-1.0.1.1-RQANaufKpxutBSM6lstXjfW21UhbQz8Rot3MgsOBnjE",md: 'AzR1ghjh9gVrNySGU0d96GiheAPgEHDZSGVFD_lXyp0-1755469943-1.2.1.1-CT4pwF9WsfWmPRdXjkg9NR_VvQDByO55T8YnWn1.tOAT5mL23gvjGmaeYZougjWQyHgWjst8xF21TaNAnA0Fasi3NGEpTEIbzKlxJmcLsrZh6G7tDhSqHfu6N4MwW1sg4XOHg5cPAzAja3ABHXFhcNU9tHFb0BeP4ftB_dl2LqKe1h5UYJQcsv3A5el3yMZXlouh00TIdidBs2CNJhHrA6Vt0pQgEWQvl5tMEGMyqmfylOTR3Pl_JDHxjrPzf09jI9YI8CpL6AulfY9CzeNSDEXzMLTzreO4zTD1dWACAYXzUSrEMbZP2q2It_BGtnd_9INB4AFMn7psAZaNwxj3bK_bqwhxy6_e52KQsu4542WjXpMnvan7Fp1dwPMlR56bfy9pPwHp4hlSAvYuN63EDEa9ig1zBwzOwfAukMBL2YZd80v1gFw6Fh51f.8.UbLhmYgvdMd15f1hSQRfPCUXMll2EBTjXiahKlM_WV2Ki4JhNqpBbH7k_eEPdWrp0IfV7DZ8qiNTG_lsjlIly7jy3HZbgYTZKj7Cbi4he8TDEm7xL4uJX42aByfgu6kfoE5CMrc1NUn.XSywdCw8sbyNKIyMOhmrzKGJiTvvLiD62dlDBw2_POVQvgQ9PRHzt2vyCw3sjmg0ma9oMXCdk_naBACh35nLSLIci33Ch5ddSg0M7aNHx16dG9M1t2wfmrwofuLLnoEfQ.V5bY5YZzbWJ0ezAZKA7m6KAtDv5Hni2v4eNCISV0q.kfy6OeKF3IsETG_S_f0CP.uTaP_uoj22qjL5DuDm2LtB6CJWfc1FB6Uvw.f8rhbIiZyuW2el5S9mGkej8JgMIKHUwWU3wARAzDJ0ZeXbZUkFAEo7nK9TU3h_69svDilcUibIr5n9oTbrZgi8rLnzwUG9lsM99BWWh04idXNGjNvFy.ndDMkYc.uBbj.XL_iLYrW1.G12WSq66lC7mqLcmU5qMD9x.DYrT9uzR3SOCyc8hXcM0Er0aQBJkQdGo13GVdRhSk55813YvFmzrKQj30m6AcQ6vRDfVkPoFEMHOPGT8RHgKXA3N7TKUaQcaEkNu_88wcuP7JvH',mdrd: 'uo0TvyJ6ZRwvppX9ll.xYBQBKn4jGZGV4BmYFHrSBOI-1755469943-1.2.1.1-jQ8uIK7YQPF1wifmeb3J1ShsWBp.U7klTXsPSxg7N4kK1C7RKTmrCzE3qJ7JpULp0.XzXOTwLRaXIpOyQi.3YrmY7cHX3_P3lM4D6hC8nHOxwXO_TbUzccBaS95GlHG2FqltounqRp9cMCa3CCFoi5l_mskRmY57NqL8V2RbFS4CgserVbWmBWTJpbiql6_GC8n3aiXlskq2fQMmb2mmOKgQuZb_HPXkpKKlbuAiOXTgXpbq0jymXnJ_zIjBtKt6K7d2qlU3GFIMs2AeOL1qaUOotdQe6M.87Bjpat0JJZzb2zqcCbgWlxMPlqxYhZgEH1OfwMmu3LfQkTg2ju_YADJcfne.v6Lv0qMx4XqxS19fzo5qpr4Nin72r6bZJ0WKLsKMdsrqqxo1Rq0GtldzbtJiZkkSQfXqIvzM8lXtr1N_I_7MCU2QaJ8LJyF_I8CY.7Hf67OHmrQptB16W3kWwmJN6FsFs29EqHufQtW6iIu.kgYzpyEs9E9ny_llInbwObFfkNKLTL0zfxKqZcZFV1KfiwGJBRQLc7HvYC84.uSZrM1PAKYAy.oW1rusSf.VU.E3Kz_LwIqItwyQRGqljjZaWugt3YQ36MOFhjUVO0FhKnKQ5gUKWK6WdlC9CY0UhkoWthG8zlN0.xacq.pT7Ahh.gG6EV3sIqnXAdhQdlAVqxOXBlPjeb3OSso7n.RYDYUhkf0OK.8RhIRZvbp4g78jOk0MiXmK2wwD57XhQMOUf6e4xbk4XcSxOL7Hoa2vNlsgWr82SsS4wvhA2y2RHmn14I0jXmEuw8tWxwpAoiOPEvOj4d_mHpyavIwk_PLwwhHswr4T2urw244iZqwWhMCFpoZym22amAaJes3nvTL4NKbemeBp5st7z59B33P52xH_Kr9g8tu6ZQ_NRWq6HFDHo0Vzlmw1wjKFmV8Fv.n7R8YFcb.UO0gG1G2yDV63kZxABjpGEeFWlrcf2xtAXhX1jnDfkh7A2yqfAMdnqBRpLACEdxOqzQXkJ4a.NZjXvl3rNAjOzGjIOXJyMwAhNujFz8DhcGi96Ip.kU7tyuwRoJOyiB4BvmKMWbo67L_agQMTWBSiZhHhr85s36nDSX4Iwz3aFxM.N45XJa6i.efQ7weS8uJ_qNjdxpksyK3KQmR.4RruN6nQvUQ1XuYkBCdY4Cz8C9BVVRVJByx_.ctZb1f7w7B6o6ZUg2NFx3w20y5u85moqMM.f6OUyBiwkAliSg.4fLe_I7Oq_oAkzBnw0rlfHTmrv.peJFffGx41uabwZ_aOxx.hdkpMHUrnBg5e5hn_K0folzfyzo9fXfo6T3SUWlCYlRSPHpfMsr0uzGuNq_njtqr4rNeR4W86Kl2Sp6dwC4GiirnVfniNXVuO8h6jpk6tKCD2D0CC7GQBh9iKoDXBjzSvgJix7S.CcvdlRyZy4YoinPuX379nu8NhXwDvNaVaVclooBhiU2tki3Dzbl0UoR.h5fpd.ODLmKl5Ed27vjhcuQTvXnLewGtRHebDIVGz_5RfL5QG3d0ulfh23TVnvSIOqp3xz4Y.DYCfBdKzt4M85tj_34o4ov.whysCzMVgZRtWBlsYBRDrGTVui.AVX9mAH3rg8fhelq61kPyxzVWkyCTMlcmEGmZqVqTgJqyIsrNgBMybaP3P4KUvCT3dLIlDPDs.6S.7kL.0j3DysmllPxfVpm8c9PVt7yeP76Sq04pML2gGuQZaV2rZAVyl9dy0s_auGP9g_iuh__HN_H7MT.KYSUtseHSXh.vtI33NXbKJC_wnme0DAANpo21x9l9qQIq6aZ6KgGVeWDYtzrBhpsuKBJsYEV9zd_db6.qm4knXLAnpE2HqvHdIERi0mOOQtsRZHWv1gtmBK3HlByR.6ZoVZ4arkzdBIHKZeuPfd28UHC4O94W0syORfG7ckB010aUTxFn6NubrY3wbvaoBzObi87SQTsfd4RTuyktS3XQET4f7k7Nn_c4L5Kg8U439ZEHN7JMc4p9proTfrS.AEYXyXarlRi6Bd.oKz6.e10jMhaARb8AKIx_wgbX9UapCU7oxuN39z6RbNW0pgk7YwVAivg_QvaY7YB7qZ_SKjjdKJs7O2umXJ4UL2BkAD.TNg5fHMPfaD5PusDg1W2wtwI873QEEW8QdBXkO6.d3B4HMyUXRm70.1pnzhz.hvNLXNSLOFIWqYku.HoZBNUXDtvN.bKfTRFFkDAyaZw5cC3WcTaJ1yhYweOQ6iu69r7Li2vo5IKS__lWNwTVxYbc4H8BFEAkkuZDp7H_WgKjOSU.2DJQ0IeMimOOPpfJxzGnGLqbznSyzujPGZHDG9aC_0T6PgOeQvZ39kuxQx1PNMF4Nd7Zyki0PJc_kcoqOpAsHK1CPnbkTfhiFcKFhit5QSNc2D9.aloV8nUybPavoYf.iOoLe0U6HDOmjhIqUiYxZ0AjdOv3H6.HU_2sypUaJ8FzjWkUJtefVo9Mwn8TyD_AGjOeM7Lr.Z2Wc5AL31OlS.gpNgS6M3FBuNAME8kI_uigUsm6XSU_HPHbut.GH7gIgczmkustJv.At.Y8Btd.YN7VuGREHoRNAbWkjM8GVxMtPJJ.THd3hYFsY_YdDPnJkE.bZXt3HeyGBURQydMZMd9patuiaAQhitvkjPkSLU9T0SY8WDYWl3CLwQCV65_OhvXTCfhPbogngfQCtJvZog8Qko4n.UhNdNpKKxbfFFxDBOatc1ppsJg_tG4Kw9JUKj4FXBpYnygk2v4WU2Qch2IKMSPpyxNrY7cyXa0DFbKfJ56OS2_HxoyQuQjlIAUdrBSkWJ7Sseudualg0RoE0.y.mW9c9U4Ng8jOSFv4B3KmOlP6Bi8nihxPbVAr8PdtQW2PoWtdm_C18.g2CBHJf3ZvLfhK1kD53OujnUds0A0HhirfUgSHIyDS9s6Zibma9Z8JTjafOpafTSvkAt5seddqegRkr42GIiMZ7TJmOH0KSAskWpi32mSjHNmTcPruM6k0BlfkhMFMx3663wPQl1p41K9nd1J0khdTsbFVtn3ESieJQepRi4kI5m9aUSyNTyHSXAOiRPYvAaSdPhd0uj9yAr8Wu93JCF59BTxjPjWRADnfv7IX76fjFACmCRUZr_5pi07.WgITASx0J7.grsJDqPsqqge8e7SC0cAhodmiF2x2ddHTdBTNmBwlXtLTDDgXl1O_ZmMHCOXWmEUI6XBQeWbEvkQJf7n2s52q3qD19t83EmxElJCPMN1VuTL4U6OV7oulNX.ubC8tIxh3TstWcve0.GERGX6lnTGkOWQLSjxB7jmcxFWSv0xiFqNHq_N5b.SIWQwQvrSNjYsAXfgxP1HGwXDd6ukKZ0i7b7v2gOHfna.0',};var a = document.createElement('script');a.src = '/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1?ray=970ca088efacf51e';window._cf_chl_opt.cOgUHash = location.hash === '' &amp;&amp; location.href.indexOf('#') !== -1 ? '#' : location.hash;window._cf_chl_opt.cOgUQuery = location.search === '' &amp;&amp; location.href.slice(0, location.href.length - window._cf_chl_opt.cOgUHash.length).indexOf('?') !== -1 ? '?' : location.search;if (window.history &amp;&amp; window.history.replaceState) {var ogU = location.pathname + window._cf_chl_opt.cOgUQuery + window._cf_chl_opt.cOgUHash;history.replaceState(null, null,"\/id\/api\/authenticate?__cf_chl_rt_tk=vyK7_VIyeLT6G95LnhqSgUzoxuihvDPMU6GvMnbtRO8-1755469943-1.0.1.1-RQANaufKpxutBSM6lstXjfW21UhbQz8Rot3MgsOBnjE"+ window._cf_chl_opt.cOgUHash);a.onload = function() {history.replaceState(null, null, ogU);}}document.getElementsByTagName('head')[0].appendChild(a);}());
+        
+            
+                : 970ca088efacf51e 
+                : 34.42.4.87</p><div spacing="6.4" class="mui-10b71k9"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeX-large MuiButton-containedSizeX-large MuiButton-colorSecondary MuiButton-disableElevation MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeX-large MuiButton-containedSizeX-large MuiButton-colorSecondary MuiButton-disableElevation MuiButton-fullWidth mui-1aiupbq" tabindex="0" type="button" id="back" aria-label="Back">Back</button></div></div></div></div></div></div></div><div tabindex="0" data-testid="sentinelEnd"></div></div></body></html>

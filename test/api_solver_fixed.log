@@ -1,0 +1,11 @@
+nohup: ignoring input
+Downloading model definition files...
+headers-order.json            OK!
+header-network.zip            OK!
+browser-helper-file.json      OK!
+fingerprint-network.zip       OK!
+input-network.zip             OK!
+Traceback (most recent call last):
+  File "/workspace/project/Mass-checker/turnstile_solver/api_solver.py", line 12, in <module>
+    from patchright.async_api import async_playwright
+ModuleNotFoundError: No module named 'patchright'

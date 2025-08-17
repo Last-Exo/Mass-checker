@@ -1,0 +1,237 @@
+nohup: ignoring input
+2025-08-17 22:24:33,798 - apscheduler.scheduler - INFO - [22:24:33] [[34mINFO[0m] -> Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-17 22:24:33,798 - apscheduler.scheduler - INFO - [22:24:33] [[34mINFO[0m] -> Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-08-17 22:24:33,798 - __main__ - INFO - [22:24:33] [[34mINFO[0m] -> 🤖 Starting Exo Mass Checker Bot with Enhanced Turnstile Bypass...
+2025-08-17 22:24:33,798 - __main__ - INFO - [22:24:33] [[34mINFO[0m] -> 🔧 Enhanced Browser: True (chromium)
+2025-08-17 22:24:33,798 - __main__ - INFO - [22:24:33] [[34mINFO[0m] -> 🛡️ Turnstile Service: True
+2025-08-17 22:24:33,798 - __main__ - INFO - [22:24:33] [[34mINFO[0m] -> 🌐 Turnstile API: http://127.0.0.1:5000
+2025-08-17 22:24:34,157 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getMe "HTTP/1.1 200 OK"
+2025-08-17 22:24:34,276 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/deleteWebhook "HTTP/1.1 200 OK"
+2025-08-17 22:24:34,277 - apscheduler.scheduler - INFO - [22:24:34] [[34mINFO[0m] -> Added job "<lambda>" to job store "default"
+2025-08-17 22:24:34,277 - apscheduler.scheduler - INFO - [22:24:34] [[34mINFO[0m] -> Added job "<lambda>" to job store "default"
+2025-08-17 22:24:34,277 - apscheduler.scheduler - INFO - [22:24:34] [[34mINFO[0m] -> Scheduler started
+2025-08-17 22:24:34,277 - telegram.ext.Application - INFO - Application started
+2025-08-17 22:24:34,798 - apscheduler.scheduler - INFO - [22:24:34] [[34mINFO[0m] -> Removed job 2ac4e240659f40c682f8074d22f90692
+2025-08-17 22:24:34,799 - apscheduler.executors.default - INFO - [22:24:34] [[34mINFO[0m] -> Running job "<lambda> (trigger: date[2025-08-17 22:24:34 UTC], next run at: 2025-08-17 22:24:34 UTC)" (scheduled at 2025-08-17 22:24:34.797858+00:00)
+2025-08-17 22:24:35,031 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/setMyCommands "HTTP/1.1 200 OK"
+2025-08-17 22:24:35,031 - __main__ - INFO - [22:24:35] [[34mINFO[0m] -> Bot commands set up successfully!
+2025-08-17 22:24:35,032 - apscheduler.executors.default - INFO - [22:24:35] [[34mINFO[0m] -> Job "<lambda> (trigger: date[2025-08-17 22:24:34 UTC], next run at: 2025-08-17 22:24:34 UTC)" executed successfully
+2025-08-17 22:24:35,799 - apscheduler.scheduler - INFO - [22:24:35] [[34mINFO[0m] -> Removed job 5216e76a37f54adaa5a1bc9a2fe940ac
+2025-08-17 22:24:35,800 - apscheduler.executors.default - INFO - [22:24:35] [[34mINFO[0m] -> Running job "<lambda> (trigger: date[2025-08-17 22:24:35 UTC], next run at: 2025-08-17 22:24:35 UTC)" (scheduled at 2025-08-17 22:24:35.798388+00:00)
+2025-08-17 22:24:35,952 - __main__ - INFO - [22:24:35] [[34mINFO[0m] -> 🚀 Starting Turnstile API service for enhanced Cloudflare bypass
+2025-08-17 22:24:35,952 - __main__ - INFO - [22:24:35] [[34mINFO[0m] ->    Host: 127.0.0.1:5000
+2025-08-17 22:24:35,952 - __main__ - INFO - [22:24:35] [[34mINFO[0m] ->    Browser: chromium (enhanced: True)
+2025-08-17 22:24:35,952 - __main__ - INFO - [22:24:35] [[34mINFO[0m] ->    Threads: 2
+2025-08-17 22:24:35,953 - __main__ - INFO - [22:24:35] [[34mINFO[0m] -> ✅ Turnstile API service started successfully!
+2025-08-17 22:24:35,954 - apscheduler.executors.default - INFO - [22:24:35] [[34mINFO[0m] -> Job "<lambda> (trigger: date[2025-08-17 22:24:35 UTC], next run at: 2025-08-17 22:24:35 UTC)" executed successfully
+[22:24:35] [[34mINFO[0m] -> Starting browser initialization
+[22:24:35] [[34mINFO[0m] -> Starting browser initialization
+2025-08-17 22:24:35,954 - TurnstileAPIServer - INFO - [22:24:35] [[34mINFO[0m] -> Starting browser initialization
+[22:24:36] [[32mSUCCESS[0m] -> Browser pool initialized with 2 browsers
+[22:24:36] [[32mSUCCESS[0m] -> Browser pool initialized with 2 browsers
+2025-08-17 22:24:36,597 - TurnstileAPIServer - INFO - [22:24:36] [[32mSUCCESS[0m] -> Browser pool initialized with 2 browsers
+[2025-08-17 22:24:36 +0000] [2816] [INFO] [22:24:36] [[34mINFO[0m] -> Running on http://127.0.0.1:5000 (CTRL + C to quit)
+2025-08-17 22:24:36,598 - hypercorn.error - INFO - [22:24:36] [[34mINFO[0m] -> Running on http://127.0.0.1:5000 (CTRL + C to quit)
+2025-08-17 22:24:44,624 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:24:54,740 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:25:04,855 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:25:14,971 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:25:25,086 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:25:35,202 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:25:45,327 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:25:55,443 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:00,179 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:00,678 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/sendMessage "HTTP/1.1 200 OK"
+2025-08-17 22:26:01,713 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:01,955 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-17 22:26:02,209 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:26:06,126 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:06,241 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getFile "HTTP/1.1 200 OK"
+2025-08-17 22:26:06,355 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot8273330448%3AAAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/documents/file_2.txt "HTTP/1.1 200 OK"
+2025-08-17 22:26:06,356 - handlers.file_handler - INFO - [22:26:06] [[34mINFO[0m] -> Detection results: 1 proxies, 0 accounts
+2025-08-17 22:26:06,600 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/sendMessage "HTTP/1.1 200 OK"
+2025-08-17 22:26:08,688 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:08,919 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-17 22:26:09,184 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:26:12,274 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:12,390 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getFile "HTTP/1.1 200 OK"
+2025-08-17 22:26:12,505 - httpx - INFO - HTTP Request: GET https://api.telegram.org/file/bot8273330448%3AAAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/documents/file_3.txt "HTTP/1.1 200 OK"
+2025-08-17 22:26:12,506 - handlers.file_handler - INFO - [22:26:12] [[34mINFO[0m] -> Detection results: 0 proxies, 2 accounts
+2025-08-17 22:26:12,749 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/sendMessage "HTTP/1.1 200 OK"
+2025-08-17 22:26:14,316 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:14,546 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-17 22:26:14,786 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:26:14,846 - utils.browser_manager - INFO - 🚀 Initializing enhanced browser automation
+2025-08-17 22:26:15,131 - utils.browser_manager - INFO - ✅ Using Patchright for enhanced stealth
+2025-08-17 22:26:15,131 - utils.account_checker - INFO - [22:26:15] [[34mINFO[0m] -> 🚀 Starting batch check of 2 accounts...
+2025-08-17 22:26:15,131 - utils.account_checker - INFO - [22:26:15] [[34mINFO[0m] -> 🚀 omarabailisd35t@outlook.com - Starting account check...
+2025-08-17 22:26:15,132 - utils.browser_manager - INFO - 🔧 Parsed proxy: http://ca.proxy-jet.io:1010 (auth: yes)
+2025-08-17 22:26:15,134 - utils.account_checker - INFO - [22:26:15] [[34mINFO[0m] -> 🚀 exowinbot@icloud.com - Starting account check...
+2025-08-17 22:26:15,134 - utils.browser_manager - INFO - 🔧 Parsed proxy: http://ca.proxy-jet.io:1010 (auth: yes)
+2025-08-17 22:26:15,240 - utils.browser_manager - INFO - 🌐 Launched Chromium browser with proxy: 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:26:15,511 - utils.browser_manager - INFO - 🌐 Launched Chromium browser with proxy: 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:26:15,524 - utils.browser_manager - INFO - 🆕 Created fresh isolated context for 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:26:15,524 - utils.browser_manager - INFO - 🆕 Created fresh isolated context for 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:26:15,557 - utils.login_handler - INFO - [22:26:15] [[34mINFO[0m] -> 🔐 exowinbot@icloud.com - Starting login process...
+2025-08-17 22:26:15,557 - utils.login_handler - INFO - [22:26:15] [[34mINFO[0m] -> 🌐 exowinbot@icloud.com - Navigating to login page...
+2025-08-17 22:26:15,567 - utils.login_handler - INFO - [22:26:15] [[34mINFO[0m] -> 🔐 omarabailisd35t@outlook.com - Starting login process...
+2025-08-17 22:26:15,567 - utils.login_handler - INFO - [22:26:15] [[34mINFO[0m] -> 🌐 omarabailisd35t@outlook.com - Navigating to login page...
+2025-08-17 22:26:18,986 - utils.login_handler - INFO - [22:26:18] [[34mINFO[0m] -> ❌ exowinbot@icloud.com - Failed to load login page: 403
+2025-08-17 22:26:19,000 - utils.account_checker - INFO - [22:26:19] [[34mINFO[0m] -> ⏳ Single proxy delay: 5.4s
+2025-08-17 22:26:23,602 - utils.login_handler - INFO - [22:26:23] [[34mINFO[0m] -> ✅ omarabailisd35t@outlook.com - Successfully navigated to login page
+2025-08-17 22:26:23,626 - utils.login_handler - INFO - [22:26:23] [[34mINFO[0m] -> 📝 omarabailisd35t@outlook.com - Filling login form...
+2025-08-17 22:26:23,670 - utils.login_handler - INFO - [22:26:23] [[34mINFO[0m] -> ❌ omarabailisd35t@outlook.com - Could not find email field
+2025-08-17 22:26:23,674 - utils.account_checker - INFO - [22:26:23] [[34mINFO[0m] -> ⏳ Single proxy delay: 6.3s
+2025-08-17 22:26:24,397 - utils.account_checker - INFO - [22:26:24] [[34mINFO[0m] -> 📊 Progress: 1/2 - exowinbot@icloud.com: error
+2025-08-17 22:26:24,432 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:29,969 - utils.account_checker - INFO - [22:26:29] [[34mINFO[0m] -> 📊 Progress: 2/2 - omarabailisd35t@outlook.com: error
+2025-08-17 22:26:29,969 - utils.account_checker - INFO - [22:26:29] [[34mINFO[0m] -> ✅ Batch check completed!
+2025-08-17 22:26:29,969 - utils.account_checker - INFO - [22:26:29] [[34mINFO[0m] -> 📊 Results: Valid: 0, Invalid: 0, Captcha: 0, 2FA: 0, Error: 2
+2025-08-17 22:26:30,014 - handlers.callback_handler - INFO - [22:26:30] [[34mINFO[0m] -> ⚠️ NO authorization codes found in 0 successful accounts - no auth codes file generated for user 8487454378
+2025-08-17 22:26:30,499 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:26:34,553 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:44,668 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:26:54,784 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:27:04,901 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:27:15,016 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:27:25,131 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:27:35,247 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:27:45,362 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:27:55,477 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:28:05,593 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:28:15,707 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:28:25,823 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:28:35,939 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:28:46,055 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:28:56,170 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:29:06,316 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:29:16,430 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:29:26,545 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:29:36,659 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:29:46,774 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:29:56,890 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:30:07,005 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:30:17,120 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:30:27,236 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:30:37,352 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:30:47,468 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:30:57,584 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:31:07,700 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:31:17,816 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:31:27,932 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:31:38,047 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:31:48,162 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:31:58,276 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:32:08,391 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:32:18,506 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:32:28,622 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:32:38,736 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:32:48,851 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:32:58,966 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:33:09,081 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:33:19,196 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:33:29,311 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:33:39,427 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:33:49,543 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:33:59,659 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:34:09,774 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:34:19,891 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:34:30,005 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:34:40,120 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:34:50,236 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:35:00,351 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:35:10,467 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:35:20,585 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:35:30,699 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:35:40,815 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:35:50,930 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:36:01,046 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:36:11,161 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:36:21,276 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:36:31,391 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:36:41,507 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:36:51,622 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:37:01,738 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:37:11,855 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:37:21,973 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:37:32,088 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:37:42,205 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:37:52,321 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:38:02,437 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:38:12,552 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:38:22,666 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:38:32,781 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:38:42,898 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:38:53,013 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:39:03,128 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:39:13,243 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:39:13,442 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:39:13,443 - __main__ - ERROR - [22:39:13] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:39:18,676 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:39:18,677 - __main__ - ERROR - [22:39:18] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:39:24,913 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:39:24,913 - __main__ - ERROR - [22:39:24] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:39:32,647 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:39:32,648 - __main__ - ERROR - [22:39:32] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:39:39,630 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:39:39,631 - __main__ - ERROR - [22:39:39] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:39:46,415 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:39:46,877 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-17 22:39:47,118 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:39:47,913 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:39:48,141 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-17 22:39:48,392 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:39:50,475 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:39:50,476 - __main__ - ERROR - [22:39:50] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:39:53,145 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:39:53,374 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-17 22:39:53,623 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:39:55,709 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:39:55,710 - __main__ - ERROR - [22:39:55] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:39:58,517 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:39:58,745 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/answerCallbackQuery "HTTP/1.1 200 OK"
+2025-08-17 22:39:58,979 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:39:58,981 - utils.browser_manager - INFO - 🚀 Initializing enhanced browser automation
+2025-08-17 22:39:59,277 - utils.browser_manager - INFO - ✅ Using Patchright for enhanced stealth
+2025-08-17 22:39:59,277 - utils.account_checker - INFO - [22:39:59] [[34mINFO[0m] -> 🚀 Starting batch check of 2 accounts...
+2025-08-17 22:39:59,277 - utils.account_checker - INFO - [22:39:59] [[34mINFO[0m] -> 🚀 omarabailisd35t@outlook.com - Starting account check...
+2025-08-17 22:39:59,277 - utils.browser_manager - INFO - 🔧 Parsed proxy: http://ca.proxy-jet.io:1010 (auth: yes)
+2025-08-17 22:39:59,278 - utils.account_checker - INFO - [22:39:59] [[34mINFO[0m] -> 🚀 exowinbot@icloud.com - Starting account check...
+2025-08-17 22:39:59,278 - utils.browser_manager - INFO - 🔧 Parsed proxy: http://ca.proxy-jet.io:1010 (auth: yes)
+2025-08-17 22:39:59,372 - utils.browser_manager - INFO - 🌐 Launched Chromium browser with proxy: 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:39:59,403 - utils.browser_manager - INFO - 🌐 Launched Chromium browser with proxy: 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:39:59,409 - utils.browser_manager - INFO - 🆕 Created fresh isolated context for 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:39:59,443 - utils.browser_manager - INFO - 🆕 Created fresh isolated context for 250712La4qP-resi-US:049NOA7a4VNHoIM@ca.proxy-jet.io:1010
+2025-08-17 22:39:59,474 - utils.login_handler - INFO - [22:39:59] [[34mINFO[0m] -> 🔐 omarabailisd35t@outlook.com - Starting login process...
+2025-08-17 22:39:59,474 - utils.login_handler - INFO - [22:39:59] [[34mINFO[0m] -> 🌐 omarabailisd35t@outlook.com - Navigating to login page...
+2025-08-17 22:39:59,479 - utils.login_handler - INFO - [22:39:59] [[34mINFO[0m] -> 🔐 exowinbot@icloud.com - Starting login process...
+2025-08-17 22:39:59,480 - utils.login_handler - INFO - [22:39:59] [[34mINFO[0m] -> 🌐 exowinbot@icloud.com - Navigating to login page...
+2025-08-17 22:40:00,941 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:40:00,942 - __main__ - ERROR - [22:40:00] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:40:03,112 - utils.login_handler - INFO - [22:40:03] [[34mINFO[0m] -> ❌ exowinbot@icloud.com - Failed to load login page: 403
+2025-08-17 22:40:03,122 - utils.account_checker - INFO - [22:40:03] [[34mINFO[0m] -> ⏳ Single proxy delay: 7.9s
+2025-08-17 22:40:06,677 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:40:06,677 - __main__ - ERROR - [22:40:06] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:40:08,286 - utils.login_handler - INFO - [22:40:08] [[34mINFO[0m] -> ✅ omarabailisd35t@outlook.com - Successfully navigated to login page
+2025-08-17 22:40:08,310 - utils.login_handler - INFO - [22:40:08] [[34mINFO[0m] -> 📝 omarabailisd35t@outlook.com - Filling login form...
+2025-08-17 22:40:08,357 - utils.login_handler - INFO - [22:40:08] [[34mINFO[0m] -> ❌ omarabailisd35t@outlook.com - Could not find email field
+2025-08-17 22:40:08,361 - utils.account_checker - INFO - [22:40:08] [[34mINFO[0m] -> ⏳ Single proxy delay: 7.7s
+2025-08-17 22:40:11,028 - utils.account_checker - INFO - [22:40:11] [[34mINFO[0m] -> 📊 Progress: 1/2 - exowinbot@icloud.com: error
+2025-08-17 22:40:13,661 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:40:13,662 - __main__ - ERROR - [22:40:13] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:40:16,083 - utils.account_checker - INFO - [22:40:16] [[34mINFO[0m] -> 📊 Progress: 2/2 - omarabailisd35t@outlook.com: error
+2025-08-17 22:40:16,083 - utils.account_checker - INFO - [22:40:16] [[34mINFO[0m] -> ✅ Batch check completed!
+2025-08-17 22:40:16,083 - utils.account_checker - INFO - [22:40:16] [[34mINFO[0m] -> 📊 Results: Valid: 0, Invalid: 0, Captcha: 0, 2FA: 0, Error: 2
+2025-08-17 22:40:16,133 - handlers.callback_handler - INFO - [22:40:16] [[34mINFO[0m] -> ⚠️ NO authorization codes found in 0 successful accounts - no auth codes file generated for user 8487454378
+2025-08-17 22:40:16,611 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/editMessageText "HTTP/1.1 200 OK"
+2025-08-17 22:40:22,520 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:40:22,520 - __main__ - ERROR - [22:40:22] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:40:31,433 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:40:31,433 - __main__ - ERROR - [22:40:31] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:40:44,796 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:40:44,797 - __main__ - ERROR - [22:40:44] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:41:02,755 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:41:04,508 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 409 Conflict"
+2025-08-17 22:41:04,509 - __main__ - ERROR - [22:41:04] [[31mERROR[0m] -> Update None caused error Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-08-17 22:41:15,625 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"
+2025-08-17 22:41:25,741 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot8273330448:AAHXO1re2IIpn22JeBV22E7sLdwq6psgos8/getUpdates "HTTP/1.1 200 OK"

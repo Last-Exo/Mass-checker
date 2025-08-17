@@ -1,0 +1,211 @@
+nohup: ignoring input
+ * Serving Quart app 'api_solver'
+ * Debug mode: False
+ * Please use an ASGI server (e.g. Hypercorn) directly in production
+ * Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[22:51:49] [[34mINFO[0m] -> Starting browser initialization
+[22:51:50] [[32mSUCCESS[0m] -> Browser 1 initialized successfully
+[22:51:50] [[32mSUCCESS[0m] -> Browser 2 initialized successfully
+[22:51:50] [[32mSUCCESS[0m] -> Browser pool initialized with 2 browsers
+[2025-08-17 22:51:50 +0000] [3932] [INFO] [22:51:50] [[34mINFO[0m] -> Running on http://127.0.0.1:5000 (CTRL + C to quit)
+[2025-08-17 22:51:57 +0000] [3932] [INFO] [22:51:57] [[34mINFO[0m] -> 127.0.0.1:60532 GET / 1.1 200 2212 776
+[2025-08-17 22:52:27 +0000] [3932] [INFO] [22:52:27] [[34mINFO[0m] -> 127.0.0.1:53240 GET / 1.1 200 2212 933
+[22:52:36] [[35mDEBUG[0m] -> Request completed with taskid 59680d56-9833-493c-8ce4-20f4809ca010.
+[2025-08-17 22:52:36 +0000] [3932] [INFO] [22:52:36] [[34mINFO[0m] -> 127.0.0.1:58512 GET /turnstile 1.1 202 51 878
+[22:52:36] [[35mDEBUG[0m] -> Browser 1: Starting Turnstile solve for URL: https://www.epicgames.com/id/login with Sitekey: 0x4AAAAAAADnPIDROzLVaoAo | Proxy: None
+[22:52:36] [[35mDEBUG[0m] -> Browser 1: Setting up page data and route
+[22:52:36] [[35mDEBUG[0m] -> Browser 1: Setting up Turnstile widget dimensions
+[22:52:36] [[35mDEBUG[0m] -> Browser 1: Starting Turnstile response retrieval loop
+[22:52:36] [[35mDEBUG[0m] -> Browser 1: Attempt 1 - No Turnstile response yet
+[22:52:37] [[35mDEBUG[0m] -> Browser 1: Attempt 1 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:37] [[35mDEBUG[0m] -> Browser 1: Attempt 2 - No Turnstile response yet
+[22:52:38] [[35mDEBUG[0m] -> Browser 1: Attempt 2 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:38] [[35mDEBUG[0m] -> Browser 1: Attempt 3 - No Turnstile response yet
+[22:52:39] [[35mDEBUG[0m] -> Browser 1: Attempt 3 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:39] [[35mDEBUG[0m] -> Browser 1: Attempt 4 - No Turnstile response yet
+[22:52:40] [[35mDEBUG[0m] -> Browser 1: Attempt 4 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:40] [[35mDEBUG[0m] -> Browser 1: Attempt 5 - No Turnstile response yet
+[2025-08-17 22:52:41 +0000] [3932] [INFO] [22:52:41] [[34mINFO[0m] -> 127.0.0.1:58526 GET /result 1.1 200 17 482
+[22:52:41] [[35mDEBUG[0m] -> Browser 1: Attempt 5 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:41] [[35mDEBUG[0m] -> Browser 1: Attempt 6 - No Turnstile response yet
+[22:52:42] [[35mDEBUG[0m] -> Browser 1: Attempt 6 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:42] [[35mDEBUG[0m] -> Browser 1: Attempt 7 - No Turnstile response yet
+[22:52:43] [[35mDEBUG[0m] -> Browser 1: Attempt 7 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:43] [[35mDEBUG[0m] -> Browser 1: Attempt 8 - No Turnstile response yet
+[22:52:44] [[35mDEBUG[0m] -> Browser 1: Attempt 8 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:44] [[35mDEBUG[0m] -> Browser 1: Attempt 9 - No Turnstile response yet
+[22:52:45] [[35mDEBUG[0m] -> Browser 1: Attempt 9 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:45] [[35mDEBUG[0m] -> Browser 1: Attempt 10 - No Turnstile response yet
+[22:52:46] [[35mDEBUG[0m] -> Browser 1: Attempt 10 failed: Locator.click: Timeout 1000ms exceeded.
+Call log:
+  - waiting for locator("//div[@class='cf-turnstile']")
+    - locator resolved to JSHandle@<div class="cf-turnstile" data-sitekey="0x4AAAAAAADnPIDROzLVaoAo">…</div>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 500ms
+
+[22:52:46] [[31mERROR[0m] -> Browser 1: Error solving Turnstile in [31m10.364[0m Seconds
+[22:52:46] [[35mDEBUG[0m] -> Browser 1: Clearing page state
