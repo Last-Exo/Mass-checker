@@ -7,7 +7,7 @@ from telegram.constants import ParseMode
 from bot.keyboards import Keyboards
 from bot.user_data import user_manager
 from utils.file_manager import FileManager
-from utils.account_checker_cf import AccountCheckerCF
+from utils.account_checker import AccountChecker
 from handlers.start_handler import help_command
 from config import settings
 
@@ -264,7 +264,7 @@ email3@example.com:password3
                         pass  # Ignore rate limit errors
             
             # Start checking
-            async with AccountCheckerCF(proxies) as checker:
+            async with AccountChecker(proxies) as checker:
                 results = await checker.check_accounts_batch(
                     accounts, progress_callback
                 )
