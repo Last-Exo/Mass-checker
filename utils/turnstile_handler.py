@@ -1,7 +1,10 @@
 """
 Turnstile challenge handler for Epic Games login
 Integrates with the turnstile solver to handle Cloudflare challenges
-Uses both API service and direct async solver approaches
+
+Architecture:
+- Primary: API service (api_solver.py) - Main solver running as web service
+- Fallback: Direct async solver (async_solver.py) - Core engine for standalone use
 """
 import asyncio
 import logging
@@ -72,7 +75,10 @@ class TurnstileHandler:
         }
     
     async def _solve_with_api_service(self, url: str, sitekey: str) -> Dict[str, Any]:
-        """Solve using the Turnstile API service"""
+        """
+        Solve using the Turnstile API service (api_solver.py)
+        This is the main solver that runs as a web service with HTTP endpoints
+        """
         try:
             api_url = f"http://{TURNSTILE_SERVICE_HOST}:{TURNSTILE_SERVICE_PORT}/turnstile"
             params = {
@@ -132,7 +138,10 @@ class TurnstileHandler:
             return {'success': False, 'error': f'API service error: {str(e)}'}
     
     async def _solve_with_async_solver(self, page: Any, url: str, sitekey: str, start_time: float) -> Dict[str, Any]:
-        """Solve using the direct async solver"""
+        """
+        Solve using the direct async solver (async_solver.py)
+        This is the core engine used as fallback when API service is unavailable
+        """
         try:
             # Check if turnstile widget is present
             turnstile_widget = await page.query_selector('.cf-turnstile')
