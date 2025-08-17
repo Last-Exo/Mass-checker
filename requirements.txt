@@ -22,3 +22,8 @@ lxml==5.4.0
 # Utilities
 psutil==7.0.0
 simple-useragent
+quart
+asyncio
+argparse
+patchright
+camoufox[geoip]
