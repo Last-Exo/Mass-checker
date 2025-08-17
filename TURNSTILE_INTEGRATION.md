@@ -76,7 +76,7 @@ success, result = await login_handler.perform_login(page, email, password)
 
 ### Dropbox Screenshot Integration
 
-Automatically takes screenshots on successful login and uploads to Dropbox:
+Automatically takes screenshots on successful Epic Games login and uploads to Dropbox:
 
 ```python
 from utils.dropbox_uploader import DropboxUploader
@@ -84,6 +84,8 @@ from utils.dropbox_uploader import DropboxUploader
 uploader = DropboxUploader()
 await uploader.upload_screenshot(screenshot_data, "account@example.com")
 ```
+
+**Note**: Screenshots are only taken for successful logins to Epic Games domains (epicgames.com, store.epicgames.com, etc.), not for other websites.
 
 ## 🚀 Features
 
@@ -93,7 +95,7 @@ await uploader.upload_screenshot(screenshot_data, "account@example.com")
 - **Proxy integration**: All solvers support user-provided proxies
 - **User agent management**: Uses simple_useragent package consistently
 - **Session persistence**: Maintains cookies and session data across navigation
-- **Screenshot functionality**: Captures and uploads successful logins to Dropbox
+- **Screenshot functionality**: Captures and uploads successful Epic Games logins to Dropbox
 - **Error handling**: Comprehensive logging and error recovery
 - **Modular design**: Clean separation of concerns
 
@@ -168,12 +170,20 @@ The system automatically detects which solvers are available:
 
 ## 📸 Screenshot Feature
 
-On successful login, the system:
+On successful Epic Games login, the system:
 
-1. Takes a screenshot of the logged-in page
-2. Creates a date-based folder structure in Dropbox
-3. Uploads the screenshot with account email as filename
-4. Does not save screenshots locally (memory efficient)
+1. Checks if the login was to an Epic Games domain (epicgames.com, store.epicgames.com, etc.)
+2. Takes a screenshot of the logged-in Epic Games page
+3. Creates a date-based folder structure in Dropbox
+4. Uploads the screenshot with account email as filename
+5. Does not save screenshots locally (memory efficient)
+
+**Epic Games Domains Supported:**
+- epicgames.com
+- www.epicgames.com
+- store.epicgames.com
+- launcher.store.epicgames.com
+- accounts.epicgames.com
 
 Folder structure: `/Screenshots/YYYY-MM-DD/account@example.com_timestamp.png`
 
