@@ -1,7 +1,7 @@
 # Epic Games Account Checker - Modular Breakdown
 
 ## Overview
-Successfully broke down the monolithic 2000+ line `account_checker_cf.py` file into separate, modular components without breaking any functionality. All legacy code has been removed and the authentication flow has been properly fixed.
+Successfully broke down the monolithic 2000+ line account checker file into separate, modular components without breaking any functionality. All legacy code has been removed and the authentication flow has been properly fixed.
 
 ## New Modular Structure
 
