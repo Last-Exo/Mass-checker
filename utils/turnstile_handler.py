@@ -1,10 +1,11 @@
 """
-Turnstile challenge handler for Epic Games login
-Integrates with the turnstile solver to handle Cloudflare challenges
+Enhanced Turnstile challenge handler for Epic Games login
+Integrates multiple bypass methods for maximum success rate
 
 Architecture:
 - Primary: API service (api_solver.py) - Main solver running as web service
-- Fallback: Direct async solver (async_solver.py) - Core engine for standalone use
+- Fallback 1: Direct async solver (async_solver.py) - Core engine for standalone use  
+- Fallback 2: DrissionPage CloudflareBypasser - Alternative bypass method
 """
 import asyncio
 import logging
@@ -28,6 +29,13 @@ except ImportError:
     ASYNC_SOLVER_AVAILABLE = False
     logger.warning("Async turnstile solver not available")
 
+try:
+    from .enhanced_turnstile_handler import enhanced_turnstile_handler
+    ENHANCED_HANDLER_AVAILABLE = True
+except ImportError:
+    ENHANCED_HANDLER_AVAILABLE = False
+    logger.warning("Enhanced turnstile handler not available")
+
 
 class TurnstileHandler:
     """Handles Turnstile challenges during Epic Games login"""
@@ -37,16 +45,38 @@ class TurnstileHandler:
     
     async def solve_turnstile_challenge(self, page: Any, url: str, sitekey: str) -> Dict[str, Any]:
         """
-        Solve Turnstile challenge using the integrated solver system
-        First tries API service, then falls back to direct async solver
+        Enhanced Turnstile challenge solver with multiple bypass methods
+        Uses the enhanced handler with API solver + DrissionPage fallback
         Returns dict with success status and token
         """
         start_time = time.time()
         
         if DEBUG_ENHANCED_FEATURES:
-            logger.info(f"🔧 Starting advanced Turnstile challenge solve for sitekey: {sitekey}")
+            logger.info(f"🔧 Starting enhanced Turnstile challenge solve for sitekey: {sitekey}")
         
-        # First try using the Turnstile API service if enabled
+        # Try enhanced handler first (includes API solver + DrissionPage fallback)
+        if ENHANCED_HANDLER_AVAILABLE:
+            try:
+                result = await enhanced_turnstile_handler.solve_turnstile_challenge(page)
+                
+                if result.get('success'):
+                    # If we got a token, inject it into the current page
+                    if result.get('token'):
+                        await self._inject_turnstile_token(page, result['token'])
+                    
+                    if DEBUG_ENHANCED_FEATURES:
+                        method = result.get('method', 'unknown')
+                        logger.info(f"✅ Enhanced handler succeeded using {method}")
+                    
+                    return result
+                else:
+                    if DEBUG_ENHANCED_FEATURES:
+                        logger.info(f"⚠️ Enhanced handler failed: {result.get('error', 'Unknown error')}")
+            except Exception as e:
+                if DEBUG_ENHANCED_FEATURES:
+                    logger.error(f"❌ Enhanced handler error: {str(e)}")
+        
+        # Fallback to original API service method
         if ENABLE_TURNSTILE_SERVICE:
             result = await self._solve_with_api_service(url, sitekey)
             if result['success']:
@@ -66,7 +96,7 @@ class TurnstileHandler:
                 if DEBUG_ENHANCED_FEATURES:
                     logger.info(f"⚠️ Async solver failed: {result.get('error', 'Unknown error')}")
         
-        # If both methods fail
+        # If all methods fail
         elapsed_time = round(time.time() - start_time, 3)
         return {
             'success': False,
@@ -90,11 +120,11 @@ class TurnstileHandler:
                 logger.info(f"🌐 Using Turnstile API service: {api_url}")
             
             async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=TURNSTILE_TIMEOUT)) as session:
-                # Step 1: Submit the task
-                async with session.post(api_url, json=params) as response:
-                    if response.status == 200:
+                # Step 1: Submit the task (API expects GET with query params)
+                async with session.get(api_url, params=params) as response:
+                    if response.status in [200, 202]:  # Accept both 200 OK and 202 Accepted
                         data = await response.json()
-                        task_id = data.get('id')
+                        task_id = data.get('task_id') or data.get('id')  # Handle both formats
                         
                         if task_id:
                             if DEBUG_ENHANCED_FEATURES:
@@ -109,24 +139,51 @@ class TurnstileHandler:
                                 
                                 async with session.get(result_url, params={'id': task_id}) as result_response:
                                     if result_response.status == 200:
-                                        result = await result_response.json()
+                                        result_text = await result_response.text()
                                         
-                                        if isinstance(result, dict) and result.get('status') == 'success':
-                                            token = result.get('token')
-                                            if token:
+                                        # Handle different response formats
+                                        if result_text == "CAPTCHA_NOT_READY":
+                                            continue  # Keep polling
+                                        
+                                        try:
+                                            result = await result_response.json()
+                                            
+                                            # Check for success with token
+                                            if isinstance(result, dict):
+                                                if result.get('status') == 'success' or result.get('value') not in ['CAPTCHA_FAIL', 'CAPTCHA_NOT_READY']:
+                                                    token = result.get('token') or result.get('value')
+                                                    if token and token not in ['CAPTCHA_FAIL', 'CAPTCHA_NOT_READY']:
+                                                        if DEBUG_ENHANCED_FEATURES:
+                                                            logger.info(f"✅ API service solved Turnstile successfully")
+                                                        return {
+                                                            'success': True,
+                                                            'token': token,
+                                                            'elapsed_time': attempt + 1
+                                                        }
+                                                
+                                                # Check for explicit failure
+                                                if result.get('status') == 'failed' or result.get('value') == 'CAPTCHA_FAIL':
+                                                    return {
+                                                        'success': False,
+                                                        'error': result.get('error', 'API service failed to solve challenge'),
+                                                        'elapsed_time': attempt + 1
+                                                    }
+                                        except:
+                                            # If not JSON, treat as plain text response
+                                            if result_text and result_text not in ['CAPTCHA_FAIL', 'CAPTCHA_NOT_READY']:
                                                 if DEBUG_ENHANCED_FEATURES:
-                                                    logger.info(f"✅ API service solved Turnstile successfully")
+                                                    logger.info(f"✅ API service returned token: {result_text}")
                                                 return {
                                                     'success': True,
-                                                    'token': token,
+                                                    'token': result_text,
                                                     'elapsed_time': attempt + 1
                                                 }
-                                        elif result.get('status') == 'failed':
-                                            return {
-                                                'success': False,
-                                                'error': result.get('error', 'API service failed'),
-                                                'elapsed_time': attempt + 1
-                                            }
+                                            elif result_text == 'CAPTCHA_FAIL':
+                                                return {
+                                                    'success': False,
+                                                    'error': 'API service failed to solve challenge',
+                                                    'elapsed_time': attempt + 1
+                                                }
                             
                             return {'success': False, 'error': 'API service timeout'}
                         else:
@@ -246,28 +303,89 @@ class TurnstileHandler:
     async def detect_turnstile_challenge(self, page: Any) -> Optional[Dict[str, str]]:
         """Detect if there's a Turnstile challenge on the current page"""
         try:
-            # Look for Turnstile widget
-            turnstile_widget = await page.query_selector('.cf-turnstile')
-            if not turnstile_widget:
-                return None
-            
-            # Extract sitekey
-            sitekey = await turnstile_widget.get_attribute('data-sitekey')
-            if not sitekey:
-                logger.info("⚠️ Turnstile widget found but no sitekey")
-                return None
-            
-            # Get current URL
             current_url = page.url
+            page_content = await page.content()
+            page_text = await page.inner_text('body')
             
-            logger.info(f"🔍 Turnstile challenge detected - Sitekey: {sitekey}")
+            # Check for Cloudflare challenge indicators
+            cf_indicators = [
+                'challenges.cloudflare.com',
+                'cf-challenge',
+                'cf-turnstile',
+                'enable javascript and cookies to continue',
+                'checking your browser',
+                'cloudflare',
+                'ray id'
+            ]
             
-            return {
-                'url': current_url,
-                'sitekey': sitekey,
-                'action': await turnstile_widget.get_attribute('data-action'),
-                'cdata': await turnstile_widget.get_attribute('data-cdata')
-            }
+            cf_detected = False
+            for indicator in cf_indicators:
+                if indicator.lower() in page_content.lower() or indicator.lower() in page_text.lower():
+                    cf_detected = True
+                    if DEBUG_ENHANCED_FEATURES:
+                        logger.info(f"🔍 Cloudflare indicator found: {indicator}")
+                    break
+            
+            if not cf_detected:
+                # Also check for standard Turnstile widget
+                turnstile_widget = await page.query_selector('.cf-turnstile')
+                if turnstile_widget:
+                    sitekey = await turnstile_widget.get_attribute('data-sitekey')
+                    if sitekey:
+                        logger.info(f"🔍 Standard Turnstile widget detected - Sitekey: {sitekey}")
+                        return {
+                            'url': current_url,
+                            'sitekey': sitekey,
+                            'action': await turnstile_widget.get_attribute('data-action'),
+                            'cdata': await turnstile_widget.get_attribute('data-cdata')
+                        }
+                return None
+            
+            # For managed challenges, we need to extract sitekey from different sources
+            sitekey = None
+            
+            # Method 1: Look for sitekey in script tags
+            scripts = await page.query_selector_all('script')
+            for script in scripts:
+                script_content = await script.inner_text()
+                if script_content and 'sitekey' in script_content.lower():
+                    # Try to extract sitekey using regex
+                    import re
+                    sitekey_match = re.search(r'["\']?sitekey["\']?\s*[:=]\s*["\']([^"\']+)["\']', script_content, re.IGNORECASE)
+                    if sitekey_match:
+                        sitekey = sitekey_match.group(1)
+                        break
+            
+            # Method 2: Look for common Cloudflare sitekeys
+            if not sitekey:
+                common_sitekeys = [
+                    '0x4AAAAAAADnPIDROzbs0Aoj',  # Common Epic Games sitekey
+                    '0x4AAAAAAADnPIDROrmt1Wwj',  # Alternative Epic Games sitekey
+                    '0x4AAAAAAAC3DHQFLr1GavRN',  # Another common sitekey
+                ]
+                
+                for test_sitekey in common_sitekeys:
+                    if test_sitekey in page_content:
+                        sitekey = test_sitekey
+                        break
+            
+            # Method 3: Use a default sitekey for Epic Games
+            if not sitekey and 'epicgames.com' in current_url:
+                sitekey = '0x4AAAAAAADnPIDROzbs0Aoj'  # Known Epic Games sitekey
+                logger.info("🔧 Using known Epic Games sitekey for managed challenge")
+            
+            if sitekey:
+                logger.info(f"🔍 Cloudflare managed challenge detected - Sitekey: {sitekey}")
+                return {
+                    'url': current_url,
+                    'sitekey': sitekey,
+                    'action': None,
+                    'cdata': None,
+                    'challenge_type': 'managed'
+                }
+            else:
+                logger.info("⚠️ Cloudflare challenge detected but no sitekey found")
+                return None
             
         except Exception as e:
             logger.info(f"❌ Error detecting Turnstile challenge: {e}")
@@ -281,20 +399,72 @@ class TurnstileHandler:
             if not challenge_info:
                 return True  # No challenge, continue
             
-            # Solve challenge
-            result = await self.solve_turnstile_challenge(
-                page,
-                challenge_info['url'],
-                challenge_info['sitekey']
-            )
+            challenge_type = challenge_info.get('challenge_type', 'standard')
             
-            if result['success']:
-                # Wait a moment for the page to process the solution
-                await asyncio.sleep(2)
-                return True
+            if challenge_type == 'managed':
+                # For managed challenges, we need to handle them differently
+                logger.info("🔧 Handling Cloudflare managed challenge...")
+                
+                # First, try to wait for the challenge to auto-solve
+                initial_url = page.url
+                await asyncio.sleep(5)  # Wait for potential auto-solve
+                
+                current_url = page.url
+                if current_url != initial_url and 'error' not in current_url.lower():
+                    logger.info("✅ Managed challenge auto-solved")
+                    return True
+                
+                # If auto-solve didn't work, try to solve with API
+                result = await self.solve_turnstile_challenge(
+                    page,
+                    challenge_info['url'],
+                    challenge_info['sitekey']
+                )
+                
+                if result['success']:
+                    # For managed challenges, we might need to wait longer and check for redirect
+                    logger.info("⏳ Waiting for managed challenge to complete...")
+                    
+                    # Wait up to 30 seconds for redirect or page change
+                    for attempt in range(30):
+                        await asyncio.sleep(1)
+                        new_url = page.url
+                        
+                        # Check if we've been redirected away from the challenge page
+                        if new_url != initial_url:
+                            if 'error' not in new_url.lower() and 'challenge' not in new_url.lower():
+                                logger.info(f"✅ Managed challenge completed - redirected to: {new_url}")
+                                return True
+                            elif 'error' in new_url.lower():
+                                logger.info(f"❌ Redirected to error page: {new_url}")
+                                return False
+                        
+                        # Check if login form elements are now available
+                        email_field = await page.query_selector('input[type="email"], input[name="email"]')
+                        if email_field:
+                            logger.info("✅ Login form now available - challenge completed")
+                            return True
+                    
+                    logger.info("⚠️ Managed challenge timeout - continuing anyway")
+                    return True  # Continue even if we're not sure it worked
+                else:
+                    logger.info(f"❌ Failed to solve managed challenge: {result.get('error', 'Unknown error')}")
+                    return False
             else:
-                logger.info(f"❌ Failed to solve Turnstile: {result.get('error', 'Unknown error')}")
-                return False
+                # Standard challenge handling
+                result = await self.solve_turnstile_challenge(
+                    page,
+                    challenge_info['url'],
+                    challenge_info['sitekey']
+                )
+                
+                if result['success']:
+                    # Wait a moment for the page to process the solution
+                    await asyncio.sleep(2)
+                    return True
+                else:
+                    logger.info(f"❌ Failed to solve Turnstile: {result.get('error', 'Unknown error')}")
+                    return False
                 
         except Exception as e:
             logger.info(f"❌ Error handling Turnstile challenge: {e}")

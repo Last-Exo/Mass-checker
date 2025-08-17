@@ -143,7 +143,7 @@ class TurnstileAPIServer:
         for _ in range(self.thread_count):
             if self.browser_type in ['chromium', 'chrome', 'msedge']:
                 browser = await playwright.chromium.launch(
-                    channel=self.browser_type,
+                    channel=self.browser_type if self.browser_type != 'chromium' else None,
                     headless=self.headless,
                     args=self.browser_args
                 )
@@ -206,18 +206,22 @@ class TurnstileAPIServer:
             if self.debug:
                 logger.debug(f"Browser {index}: Setting up Turnstile widget dimensions")
 
+            # Critical: Set widget width for proper rendering
             await page.eval_on_selector("//div[@class='cf-turnstile']", "el => el.style.width = '70px'")
 
             if self.debug:
                 logger.debug(f"Browser {index}: Starting Turnstile response retrieval loop")
 
-            for _ in range(10):
+            # Try to solve the challenge
+            solved = False
+            for attempt in range(10):
                 try:
                     turnstile_check = await page.input_value("[name=cf-turnstile-response]", timeout=2000)
                     if turnstile_check == "":
                         if self.debug:
-                            logger.debug(f"Browser {index}: Attempt {_} - No Turnstile response yet")
+                            logger.debug(f"Browser {index}: Attempt {attempt + 1} - No Turnstile response yet")
                         
+                        # Click the Turnstile widget to trigger solving
                         await page.locator("//div[@class='cf-turnstile']").click(timeout=1000)
                         await asyncio.sleep(0.5)
                     else:
@@ -227,11 +231,15 @@ class TurnstileAPIServer:
 
                         self.results[task_id] = {"value": turnstile_check, "elapsed_time": elapsed_time}
                         self._save_results()
+                        solved = True
                         break
-                except:
+                except Exception as e:
+                    if self.debug:
+                        logger.debug(f"Browser {index}: Attempt {attempt + 1} failed: {str(e)}")
                     pass
 
-            if self.results.get(task_id) == "CAPTCHA_NOT_READY":
+            # If not solved, mark as failed
+            if not solved:
                 elapsed_time = round(time.time() - start_time, 3)
                 self.results[task_id] = {"value": "CAPTCHA_FAIL", "elapsed_time": elapsed_time}
                 if self.debug:
