@@ -7,10 +7,13 @@ apscheduler==3.11.0
 # Browser Automation
 patchright==1.52.5
 camoufox[geoip]
+playwright
+DrissionPage==4.0.5.6
 
 # API Server (for Turnstile solver)
 quart
 hypercorn
+flask[async]
 
 # HTTP and Networking (kept for compatibility)
 aiohttp==3.10.11
@@ -22,3 +25,14 @@ lxml==5.4.0
 # Utilities
 psutil==7.0.0
 simple-useragent
+loguru
+pydantic
+proxystr
+python-socketio
+
+# Image processing for solver
+pyautogui
+opencv-python
+
+# Dropbox integration
+dropbox
